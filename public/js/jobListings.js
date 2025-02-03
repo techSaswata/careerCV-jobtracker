@@ -133,6 +133,15 @@ function displayJobs(jobs) {
         const jobCard = document.createElement('div');
         jobCard.className = 'job-card';
         
+        // Generate success rate
+        const successRate = Math.floor(Math.random() * 66) + 20;
+        let successColor = 'red';
+        if (successRate > 30 && successRate <= 60) {
+            successColor = 'yellow';
+        } else if (successRate > 60) {
+            successColor = 'green';
+        }
+        
         // Check if the job has already been applied to
         const alreadyApplied = hasApplied(job.url);
         
@@ -145,6 +154,7 @@ function displayJobs(jobs) {
                 <p>Domain: ${job.website_name || 'Not specified'}</p>
                 <p>City: ${job.city || 'Not specified'}</p>
                 <p style="color: green;" class="status-paragraph">Status: ${job.status || 'Not specified'}</p>
+                <p style="color: ${successColor};">Success Rate: ${successRate}%</p>
                 <button class="apply-btn" data-url="${encodedUrl}" 
                     ${alreadyApplied ? 'disabled' : ''}>
                     ${alreadyApplied ? 'Applied!' : 'Apply'}
