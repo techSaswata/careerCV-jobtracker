@@ -137,7 +137,7 @@ function displayJobs(jobs) {
         const successRate = Math.floor(Math.random() * 66) + 20;
         let successColor = 'red';
         if (successRate > 30 && successRate <= 60) {
-            successColor = 'yellow';
+            successColor = 'rgb(255, 195, 0)';
         } else if (successRate > 60) {
             successColor = 'green';
         }
