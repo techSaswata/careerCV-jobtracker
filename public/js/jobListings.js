@@ -9,11 +9,6 @@ const firebaseConfig = {
     measurementId: "G-M4LM6RP86V"
 };
 
-// Initialize Firebase if not already initialized
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
-
 // Function to get first name from full name
 function getFirstName(fullName) {
     return fullName ? fullName.split(' ')[0] : '';
@@ -34,17 +29,35 @@ firebase.auth().onAuthStateChanged((user) => {
         
         // Update email
         if (userEmailElement && user.email) {
-            userEmailElement.textContent = user.email;
+            const emailText = user.email;
+            const userInitial = firstName 
+                ? firstName.charAt(0).toUpperCase() 
+                : user.email.charAt(0).toUpperCase();
+                
+            userEmailElement.setAttribute('data-initial', userInitial);
+
+            // Insert actual content inside the element for better fallback
+            userEmailElement.innerHTML = `
+                <span class="email-initial">${userInitial}</span> 
+                <span class="email-text">${emailText}</span>
+            `;
+
+            // Debugging: Log output
+            console.log('User Initial:', userInitial);
+            console.log('data-initial attribute:', userEmailElement.getAttribute('data-initial'));
         }
     } else {
         if (userNameElement) {
             userNameElement.textContent = 'Welcome, guest!';
         }
         if (userEmailElement) {
-            userEmailElement.textContent = 'Not signed in';
+            userEmailElement.innerHTML = '<span class="email-text">Not signed in</span>';
         }
     }
 });
+
+
+
 
 const apiKey = '42688eee6fba686b21d7cea2865b4c36677be8b830aaef7aeae6ce923fc548e5';
 const jobContainer = document.getElementById('jobContainer');
