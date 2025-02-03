@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Status</title>
+    <link rel="stylesheet" href="/css/applicationStatus.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+
+    <!-- Load our JavaScript after Firebase SDK -->
+    <script src="/js/applicationStatus.js" defer></script>
+</head>
+<body>
+    <div id="userName" class="user-welcome"></div>
+    <h1>My Applications</h1>
+    <div id="applicationContainer" class="application-container">
+        <!-- Applications will be dynamically added here -->
+    </div>
+
+    <!-- Placeholder for the button to be inserted dynamically -->
+    <div id="buttonContainer"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <h2 class="sidebar-title">CareerCV</h2>
+            <div class="sidebar-menu">
+                <a href="applicationStatus.html" class="sidebar-item">View My Applications</a>
+            </div>
+            <div class="sidebar-footer">
+                <span id="userEmail" class="user-email"></span>
+                <div class="footer-text">Made with ❤️ by TechSd</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <br>
+    <footer>Made with ❤️ by TechSd</footer>
+</body>
+</html>

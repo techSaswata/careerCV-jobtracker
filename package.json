@@ -1,0 +1,19 @@
+{
+    "name": "careerCV",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "express": "^4.21.2",
+        "firebase": "^11.2.0",
+        "googleapis": "^144.0.0",
+        "passport": "^0.7.0",
+        "passport-google-oauth20": "^2.0.0"
+    },
+    "scripts": {
+        "start": "live-server public",
+        "dev": "live-server public"
+    },
+    "devDependencies": {
+        "live-server": "^1.2.2"
+    }
+}

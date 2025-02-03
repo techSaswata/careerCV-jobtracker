@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerCV</title>
+    <link rel="stylesheet" href="/css/jobListings.css">
+</head>
+<body>
+    <header class="header">
+        <div class="user-profile">
+            <span id="userName"></span>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <h2 class="sidebar-title">CareerCV</h2>
+            <div class="sidebar-menu">
+                <a href="index.html" class="sidebar-item">Home</a>
+                <a href="jobListings.html" class="sidebar-item">Job Listings</a>
+                <a href="applicationStatus.html" class="sidebar-item">View My Applications</a>
+            </div>    
+            <div class="sidebar-footer">
+                <span id="userEmail" class="user-email"></span>
+                <div class="footer-text">Made with ❤️ by TechSd</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="app">
+        <h1>Job Listings</h1>
+        <p id="tagline">Powered by CareerCV</p>
+        <input type="text" id="searchBar" placeholder="Search for a job...">
+        <div id="jobContainer"></div>
+        <div id="appliedJobs"></div>
+        <div id="interviewJobs"></div>
+        <div id="offerJobs"></div>
+    </div>
+    
+    <!-- Original footer -->
+     <br>
+    <footer>Made with ❤️ by TechSd</footer>
+    
+    <!-- Add Firebase SDK before your script.js -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="/js/jobListings.js"></script>
+</body>
+</html>
