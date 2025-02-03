@@ -105,7 +105,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Keep ::before for styling */
 .user-email::before {
   content: attr(data-initial);
   width: 32px;
@@ -117,31 +116,7 @@ body {
   justify-content: center;
   font-weight: 500;
   text-transform: uppercase;
-  color: white;
-  font-size: 14px;
 }
-
-/* Fallback for when ::before doesn't work */
-.email-initial {
-  width: 32px;
-  height: 32px;
-  background-color: #4a90e2;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: white;
-  font-size: 14px;
-}
-
-/* Email text should not interfere with the circle */
-.email-text {
-  font-size: 0.9rem;
-  color: white;
-}
-
 
 .footer-text {
   color: yellowgreen;
