@@ -117,6 +117,8 @@ function getStatusButtonText(status) {
     switch (status) {
         case 'applied':
             return 'Applied';
+        case 'scheduled':
+            return 'Interview Scheduled';
         case 'interviewed':
             return 'Interview Done';
         case 'offered':
@@ -131,6 +133,9 @@ function updateCardStatus(card, status) {
     
     switch (status) {
         case 'applied':
+            scheduleInterview(card)
+            break;
+        case 'scheduled':
             showInterviewQuestion(card);
             break;
         case 'interviewed':
@@ -142,14 +147,34 @@ function updateCardStatus(card, status) {
     }
 }
 
-function showInterviewQuestion(card) {
+function scheduleInterview(card) {
     const actionContainer = card.querySelector('.action-container');
+    const questionContainer = document.createElement('div');
+    questionContainer.className = 'question-container';
+    questionContainer.innerHTML = `
+        <p>Schedule your Interview Now!</p>
+        <button class="yes-btn" onclick="showInterviewQuestion(this)">Schedule</button>
+    `;
+    actionContainer.innerHTML = '';
+    actionContainer.appendChild(questionContainer);
+}
+
+function showInterviewQuestion(sourceElement) {
+    const applicationCard = sourceElement.closest('.application-card');
+    const actionContainer = applicationCard.querySelector('.action-container');
+    const statusBtn = applicationCard.querySelector('.status-btn');
+    
+    // Update status to 'scheduled'
+    statusBtn.textContent = 'Interview Scheduled';
+    updateApplicationStatus(applicationCard, 'scheduled');
+
     const questionContainer = document.createElement('div');
     questionContainer.className = 'question-container';
     questionContainer.innerHTML = `
         <p>Have you completed the interview?</p>
         <button class="yes-btn" onclick="handleInterviewSuccess(this)">Yes</button>
     `;
+    window.open("https://calendar.google.com/", '_blank');
     actionContainer.innerHTML = '';
     actionContainer.appendChild(questionContainer);
 }
