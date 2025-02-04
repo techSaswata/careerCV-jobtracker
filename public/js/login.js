@@ -11,9 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// Document ready function
 document.addEventListener('DOMContentLoaded', () => {
-    // Get form elements
     const authForm = document.getElementById('loginForm');
     const googleSignInBtn = document.getElementById('googleSignIn');
     const loadingOverlay = document.getElementById('loadingOverlay');
@@ -29,17 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loadingOverlay) loadingOverlay.style.display = 'none';
     }
 
-    // Form Toggle Function
-    function toggleForm() {
+    // Global toggle function accessible to onclick
+    window.toggleForm = function(e) {
+        if (e) e.preventDefault();
         if (wrapper) wrapper.classList.toggle('active');
-    }
+    };
 
-    // Attach toggle form event listener
+    // Attach toggle form event listener if link exists
     if (switchFormLink) {
-        switchFormLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleForm();
-        });
+        switchFormLink.addEventListener('click', window.toggleForm);
     }
 
     // Email/Password Sign Up/In
@@ -47,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         authForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Safely get form values
             const emailInput = document.getElementById('email');
             const passwordInput = document.getElementById('password');
             const fullNameInput = document.getElementById('fullName');
 
-            // Check if inputs exist
             if (!emailInput || !passwordInput || !fullNameInput) {
                 alert('Please ensure all form fields are present');
                 return;
@@ -62,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = passwordInput.value.trim();
             const fullName = fullNameInput.value.trim();
 
-            // Validate inputs
             if (!email || !password || !fullName) {
                 alert('Please fill in all fields');
                 return;
