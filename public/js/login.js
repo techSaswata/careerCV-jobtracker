@@ -12,9 +12,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get form elements
-const loginForm = document.getElementById('loginForm');
+const authForm = document.getElementById('loginForm');
 const googleSignInBtn = document.getElementById('googleSignIn');
 const loadingOverlay = document.getElementById('loadingOverlay');
+const wrapper = document.querySelector('.wrapper');
+const switchFormLink = document.getElementById('switchFormLink');
 
 // Show/hide loading functions
 function showLoading() {
@@ -25,10 +27,25 @@ function hideLoading() {
     loadingOverlay.style.display = 'none';
 }
 
-// Email/Password Sign In
-loginForm.addEventListener('submit', (e) => {
+// Form Toggle Function
+function toggleForm() {
+    if (wrapper) {
+        wrapper.classList.toggle('active');
+    }
+}
+
+// Attach toggle form event listener
+if (switchFormLink) {
+    switchFormLink.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+        toggleForm();
+    });
+}
+
+// Email/Password Sign Up/In
+authForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    showLoading(); // Show loading overlay
+    showLoading();
     
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -52,18 +69,18 @@ loginForm.addEventListener('submit', (e) => {
                         window.location.href = 'jobListings.html';
                     })
                     .catch((signInError) => {
-                        hideLoading(); // Hide loading on error
+                        hideLoading();
                         alert(signInError.message);
                     });
             }
-            hideLoading(); // Hide loading on error
+            hideLoading();
             alert(error.message);
         });
 });
 
 // Google Sign In
 googleSignInBtn.addEventListener('click', () => {
-    showLoading(); // Show loading overlay
+    showLoading();
     const provider = new firebase.auth.GoogleAuthProvider();
     
     firebase.auth().signInWithPopup(provider)
@@ -71,7 +88,7 @@ googleSignInBtn.addEventListener('click', () => {
             window.location.href = 'jobListings.html';
         })
         .catch((error) => {
-            hideLoading(); // Hide loading on error
+            hideLoading();
             alert(error.message);
         });
 });
