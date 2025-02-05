@@ -60,7 +60,7 @@ function showErrorNotification(message) {
         flex-direction: column;
         gap: 10px;
         max-width: 300px;
-        margin-below: 100px;
+        margin-below: 120px;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     `;
     
