@@ -84,7 +84,7 @@ function showErrorNotification(message) {
 
     const timeoutId = setTimeout(() => {
         document.body.removeChild(notification);
-    }, 3000);
+    }, 4000);
 
     okButton.addEventListener('click', () => {
         clearTimeout(timeoutId);
