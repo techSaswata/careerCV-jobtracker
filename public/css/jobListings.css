@@ -31,7 +31,7 @@ body {
 .sidebar {
   position: fixed;
   top: 16px;
-  left: -300px;
+  left: -300px; /* Reduced from -300px to show a bit more of the sidebar initially */
   width: 300px;
   height: calc(100vh - 32px);
   background-color: rgba(26, 26, 26, 0.8);
@@ -41,6 +41,15 @@ body {
   z-index: 1000;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0 12px 12px 0;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -100px; /* Creates an invisible hover detection area */
+  width: 100px; /* width of hover detection area */
+  height: 100%;
 }
 
 .sidebar:hover {
