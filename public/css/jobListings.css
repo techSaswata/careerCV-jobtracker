@@ -31,7 +31,7 @@ body {
 .sidebar {
   position: fixed;
   top: 16px;
-  left: -300px; /* Reduced from -300px to show a bit more of the sidebar initially */
+  left: -300px;
   width: 300px;
   height: calc(100vh - 32px);
   background-color: rgba(26, 26, 26, 0.8);
