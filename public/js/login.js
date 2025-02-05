@@ -12,7 +12,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get form elements
-const authForm = document.getElementById('loginForm');
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
 const googleSignInBtn = document.getElementById('googleSignIn');
 const loadingOverlay = document.getElementById('loadingOverlay');
 const wrapper = document.querySelector('.wrapper');
@@ -42,14 +43,32 @@ if (switchFormLink) {
     });
 }
 
-// Email/Password Sign Up/In
-authForm.addEventListener('submit', (e) => {
+// Login Form Handler
+loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     showLoading();
     
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+            window.location.href = 'jobListings.html';
+        })
+        .catch((error) => {
+            hideLoading();
+            alert(error.message);
+        });
+});
+
+// Signup Form Handler
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showLoading();
+    
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const fullName = document.getElementById('signupUsername').value;
     
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -62,19 +81,8 @@ authForm.addEventListener('submit', (e) => {
             window.location.href = 'jobListings.html';
         })
         .catch((error) => {
-            // If user already exists, try to sign in instead
-            if (error.code === 'auth/email-already-in-use') {
-                return firebase.auth().signInWithEmailAndPassword(email, password)
-                    .then(() => {
-                        window.location.href = 'jobListings.html';
-                    })
-                    .catch((signInError) => {
-                        hideLoading();
-                        alert(signInError.message);
-                    });
-            }
             hideLoading();
-            alert(error.message);
+            alert('Account Already Exists : Please Proceed with Login');
         });
 });
 
