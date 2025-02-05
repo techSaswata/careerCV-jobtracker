@@ -57,7 +57,8 @@ loginForm.addEventListener('submit', (e) => {
         })
         .catch((error) => {
             hideLoading();
-            alert(error.message);
+            alert('Account with this Emial does not exists (Proceed with Sign Up)');
+            toggleForm();
         });
 });
 
