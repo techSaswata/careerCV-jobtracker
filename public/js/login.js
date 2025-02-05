@@ -43,6 +43,55 @@ if (switchFormLink) {
     });
 }
 
+function showErrorNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 12%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 300px;
+        margin-below: 100px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    `;
+    
+    const messageElement = document.createElement('p');
+    messageElement.textContent = message;
+    
+    const okButton = document.createElement('button');
+    okButton.textContent = 'OK';
+    okButton.style.cssText = `
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    `;
+    
+    notification.appendChild(messageElement);
+    notification.appendChild(okButton);
+    document.body.appendChild(notification);
+
+    const timeoutId = setTimeout(() => {
+        document.body.removeChild(notification);
+    }, 3000);
+
+    okButton.addEventListener('click', () => {
+        clearTimeout(timeoutId);
+        document.body.removeChild(notification);
+    });
+}
+
 // Login Form Handler
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -57,7 +106,7 @@ loginForm.addEventListener('submit', (e) => {
         })
         .catch((error) => {
             hideLoading();
-            alert('Account with this Email does not exists, Please Proceed with Sign Up');
+            showErrorNotification('Account with this Email does not exists, Please Proceed with Sign Up');
             toggleForm();
         });
 });
@@ -83,7 +132,7 @@ signupForm.addEventListener('submit', (e) => {
         })
         .catch((error) => {
             hideLoading();
-            alert('Account with this Email already Exists, Please proceed with Login');
+            showErrorNotification('Account with this Email already Exists, Please proceed with Login');
             toggleForm();
         });
 });
@@ -99,6 +148,6 @@ googleSignInBtn.addEventListener('click', () => {
         })
         .catch((error) => {
             hideLoading();
-            alert(error.message);
+            showErrorNotification('Google Signin is currently Not available, Please signup or login manually');
         });
 });
