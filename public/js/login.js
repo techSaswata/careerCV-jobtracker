@@ -57,7 +57,7 @@ loginForm.addEventListener('submit', (e) => {
         })
         .catch((error) => {
             hideLoading();
-            alert('Account with this Emial does not exists (Proceed with Sign Up)');
+            alert('Account with this Email does not exists, Please Proceed with Sign Up');
             toggleForm();
         });
 });
@@ -83,7 +83,8 @@ signupForm.addEventListener('submit', (e) => {
         })
         .catch((error) => {
             hideLoading();
-            alert('Account Already Exists : Please Proceed with Login');
+            alert('Account with this Email already Exists, Please proceed with Login');
+            toggleForm();
         });
 });
 
