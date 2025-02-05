@@ -13,10 +13,12 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: #f5f5f5;
+    position: relative;
 }
 
 .wrapper {
@@ -103,14 +105,6 @@ h2::after {
     transition: 0.3s;
 }
 
-.input-group i {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-}
-
 .input-group input:focus ~ label,
 .input-group input:valid ~ label {
     top: -5px;
@@ -122,22 +116,21 @@ h2::after {
     border-bottom-color: var(--primary-color);
 }
 
-/* Buttons */
-.submit-btn {
-    width: 100%;
-    padding: 12px;
+/* Split Background */
+.split-background {
+    position: absolute;
+    top: 0;
+    right: -68px;
+    width: 54%;
+    height: 100%;
     background: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-bottom: 20px;
+    transform: skewX(-10deg);
+    transform-origin: top;
+    transition: transform var(--transition-duration) ease-in-out;
 }
 
-.submit-btn:hover {
-    background: #333;
+.wrapper.active .split-background {
+    transform: skewX(-10deg) translateX(-100%);
 }
 
 /* Welcome Section */
@@ -153,6 +146,21 @@ h2::after {
     justify-content: center;
     z-index: 1;
     transition: all var(--transition-duration) ease-in-out;
+}
+
+.welcome-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.welcome-section h2::after {
+    display: none;
+}
+
+.welcome-section p {
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.6;
 }
 
 .welcome-section.login {
@@ -175,21 +183,23 @@ h2::after {
     opacity: 1;
 }
 
-/* Split Background */
-.split-background {
-    position: absolute;
-    top: 0;
-    right: -68;
-    width: 54%;
-    height: 100%;
+/* Buttons */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
     background: var(--primary-color);
-    transform: skewX(-10deg);
-    transform-origin: top;
-    transition: transform var(--transition-duration) ease-in-out;
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 12px;
+    margin-bottom: 8px;
 }
 
-.wrapper.active .split-background {
-    transform: skewX(-10deg) translateX(-100%);
+.submit-btn:hover {
+    background: #333;
 }
 
 /* Switch Text */
@@ -211,34 +221,33 @@ h2::after {
     color: var(--primary-color);
 }
 
-/* Loading Overlay */
-.loading-overlay {
-    display: none;
+/* Footer */
+.footer {
     position: fixed;
-    top: 0;
-    left: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
+    padding: 15px;
+    text-align: center;
+    background: transparent;
+    color: #666;
+    font-size: 14px;
+    z-index: 3;
+    margin-bottom: 120px;
 }
 
-.loader {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid var(--primary-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
+.footer .heart {
+    display: inline-block;
+    color: #ff4444;
+    animation: heartbeat 1.5s ease-in-out infinite;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
+/* Google Button Styles */
 .google-btn {
     display: flex;
     flex-direction: column;
@@ -297,23 +306,4 @@ h2::after {
 
 .divider {
     display: none;
-}
-
-/* Welcome Text */
-.welcome-section h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.welcome-section h2::after {
-    display: none;
-}
-
-.welcome-section p {
-    font-size: 14px;
-    opacity: 0.8;
-    line-height: 1.6;
-}
-.hidden {
-    display: none !important;
 }

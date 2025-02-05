@@ -31,20 +31,20 @@ body {
 .sidebar {
   position: fixed;
   top: 16px;
-  left: -300px; /* Changed from right to left */
+  left: -300px;
   width: 300px;
   height: calc(100vh - 32px);
   background-color: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: left 0.3s ease; /* Changed from right to left */
+  transition: left 0.3s ease;
   z-index: 1000;
-  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Changed from border-left */
-  border-radius: 0 12px 12px 0; /* Swapped border-radius to round left top and bottom corners */
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 12px 12px 0;
 }
 
 .sidebar:hover {
-  left: -19px; /* Changed from right to left */
+  left: -19px; 
 }
 
 .sidebar-content {
