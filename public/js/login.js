@@ -46,7 +46,7 @@ if (switchFormLink) {
 toggleForm();
 setTimeout(()=>{
     toggleForm()
-},600)
+},650)
 
 function showErrorNotification(message) {
     const notification = document.createElement('div');
