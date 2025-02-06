@@ -107,7 +107,6 @@ loginForm.addEventListener('submit', (e) => {
     
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
-            showLoading();
             window.location.href = 'jobListings.html';
         })
         .catch((error) => {
@@ -134,7 +133,6 @@ signupForm.addEventListener('submit', (e) => {
             });
         })
         .then(() => {
-            showLoading();
             window.location.href = 'jobListings.html';
         })
         .catch((error) => {
