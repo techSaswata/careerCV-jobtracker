@@ -22,13 +22,27 @@ function getFirstName(fullName) {
 // Check authentication state and update UI
 firebase.auth().onAuthStateChanged((user) => {
     const userNameElement = document.getElementById('userName');
+    const userEmailElement = document.getElementById('userEmail');
     
-    if (user && userNameElement) {
+    if (user) {
+        // Update username
         const fullName = user.displayName;
         const firstName = getFirstName(fullName);
-        userNameElement.textContent = `${firstName || 'User'}!`;
-    } else if (userNameElement) {
-        userNameElement.textContent = 'Guest!';
+        if (userNameElement) {
+            userNameElement.textContent = `${firstName || 'User'}!`;
+        }
+        
+        // Update email
+        if (userEmailElement && user.email) {
+            userEmailElement.textContent = user.email;
+        }
+    } else {
+        if (userNameElement) {
+            userNameElement.textContent = 'Guest!';
+        }
+        if (userEmailElement) {
+            userEmailElement.textContent = 'Not signed in';
+        }
     }
 });
 
@@ -59,11 +73,8 @@ function loadApplications() {
 
     if (savedApplications.length === 0) {
         applicationContainer.innerHTML = `
-            <div class="no-applications">
+            <div class="no-applications" style="justify-content:center; align-items:center; margin-left: 44%; width: 100%; margin-bottom: 60px; margin-top: 60px">
                 <p>No applications yet. Start applying to jobs!</p>
-                <button onclick="window.location.href='jobListings.html'" class="status-btn">
-                    Browse Jobs
-                </button>
             </div>
         `;
         return;
@@ -90,16 +101,17 @@ function createApplicationCard(jobData) {
     const applicationCard = document.createElement('div');
     applicationCard.className = 'application-card';
     applicationCard.innerHTML = `
-        <div class="application-info">
+        <div class="application-info" style="margin-bottom: 30px">
             <h3>${jobData.title}</h3>
             <p>Domain: ${jobData.website_name || 'Not specified'}</p>
             <p>City: ${jobData.city || 'Not specified'}</p>
             <p>Applied: ${jobData.appliedDate ? formatDate(jobData.appliedDate) : 'Recently'}</p>
-            <button class="status-btn" data-url="${jobData.url}">${getStatusButtonText(jobData.status)}</button>
-            <button onclick="window.open('${jobData.url}', '_blank')" class="status-btn" style="background-color: #2196F3;">
-                View Job
-            </button>
+            <div style="display: flex; justify-content: space-between;">
+                <button class="status-btn" data-url="${jobData.url}" style="width: 48%;">${getStatusButtonText(jobData.status)}</button>
+                <button onclick="window.open('${jobData.url}', '_blank')" class="status-btn" style="width: 48%; background-color: #2196F3;">View Job</button>
+            </div>
         </div>
+
         <div class="action-container">
             <!-- Questions will be added here -->
         </div>
