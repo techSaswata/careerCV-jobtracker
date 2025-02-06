@@ -221,9 +221,18 @@ h2::after {
     color: var(--primary-color);
 }
 
+.main-container {
+    min-height: calc(85vh - 170px); /* Ensures minimum space for footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
 /* Footer */
 .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     padding: 15px;
@@ -232,7 +241,7 @@ h2::after {
     color: #666;
     font-size: 14px;
     z-index: 3;
-    margin-bottom: 120px;
+    margin-top: 0px;
 }
 
 .footer .heart {
