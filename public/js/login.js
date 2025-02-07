@@ -43,11 +43,6 @@ if (switchFormLink) {
     });
 }
 
-toggleForm();
-setTimeout(()=>{
-    toggleForm()
-},650)
-
 function showErrorNotification(message) {
     const notification = document.createElement('div');
     notification.style.cssText = `
