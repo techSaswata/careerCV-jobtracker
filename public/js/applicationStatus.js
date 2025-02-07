@@ -108,7 +108,7 @@ function createApplicationCard(jobData) {
             <p>Applied: ${jobData.appliedDate ? formatDate(jobData.appliedDate) : 'Recently'}</p>
             <div style="display: flex; justify-content: space-between;">
                 <button class="status-btn" data-url="${jobData.url}" style="width: 48%;">${getStatusButtonText(jobData.status)}</button>
-                <button onclick="window.open('${jobData.url}', '_blank')" class="status-btn" style="width: 48%; background-color: #2196F3;">View Job</button>
+                <button onclick="window.open('${jobData.url}', '_blank')" class="status-btn" style="width: 48%; background-color: #2196F3;">View Website</button>
             </div>
         </div>
 
