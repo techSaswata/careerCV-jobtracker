@@ -165,10 +165,16 @@ function scheduleInterview(card) {
     questionContainer.className = 'question-container';
     questionContainer.innerHTML = `
         <p>Schedule your Interview Now!</p>
-        <button class="yes-btn" onclick="showInterviewQuestion(this)">Schedule</button>
+        <button class="yes-btn" onclick="handleScheduleClick(this)">Schedule</button>
     `;
     actionContainer.innerHTML = '';
     actionContainer.appendChild(questionContainer);
+}
+
+// function to handle the Schedule button click
+function handleScheduleClick(button) {
+    window.open("https://calendar.google.com/", '_blank');
+    showInterviewQuestion(button);
 }
 
 function showInterviewQuestion(sourceElement) {
@@ -186,7 +192,6 @@ function showInterviewQuestion(sourceElement) {
         <p>Have you completed the interview?</p>
         <button class="yes-btn" onclick="handleInterviewSuccess(this)">Yes</button>
     `;
-    window.open("https://calendar.google.com/", '_blank');
     actionContainer.innerHTML = '';
     actionContainer.appendChild(questionContainer);
 }
