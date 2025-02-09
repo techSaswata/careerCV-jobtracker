@@ -46,7 +46,7 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-const apiKey = '42688eee6fba686b21d7cea2865b4c36677be8b830aaef7aeae6ce923fc548e5';
+const apiKey = '74d761a4a30b02c9c5530d3e03c605d0925c159fd29f4dff11983780d5c06ab4';
 const jobContainer = document.getElementById('jobContainer');
 const searchBar = document.getElementById('searchBar');
 
