@@ -9,7 +9,7 @@ CareerCV helps you streamline your job search by allowing you to:
 ✔ **Schedule Interviews** seamlessly  
 ✔ **Track** every stage of your job applications effortlessly  
 
-🚀 **Try it out now!** → [CareerCV](https://careercv.vercel.app)  
+**Try it out now!** → [CareerCV](https://careercv.vercel.app)  
 
 ---
 
