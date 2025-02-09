@@ -19,6 +19,13 @@ function getFirstName(fullName) {
     return fullName ? fullName.split(' ')[0] : '';
 }
 
+// Function to format email address
+// If email > 24 char
+function formatEmail(email) {
+    if (!email) return '';
+    return email.length <= 21 ? email : `${email.substring(0, 24)}...`;
+}
+
 // Check authentication state and update UI
 firebase.auth().onAuthStateChanged((user) => {
     const userNameElement = document.getElementById('userName');
@@ -34,7 +41,7 @@ firebase.auth().onAuthStateChanged((user) => {
         
         // Update email
         if (userEmailElement && user.email) {
-            userEmailElement.textContent = user.email;
+            userEmailElement.textContent = formatEmail(user.email);
         }
     } else {
         if (userNameElement) {
