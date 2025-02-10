@@ -1,8 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: black;
+    color: #ffffff;
     padding: 20px;
-    background-color: #f4f4f4;
 }
 
 .landing-container {
@@ -10,43 +11,211 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
-    background-color: white;
-    border: 2px solid blue;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin: 40px; 
-    padding: 20px; 
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
 }
 
-h1 {
-    color: blue;
-    font-size: 3em; /* Increased font size */
-    margin-bottom: -10px;
+header {
+    margin-bottom: 3em;
 }
 
-p {
-    font-size: 1.5em; /* Increased font size */
-    line-height: 1.5; /* Increased line spacing */
+header h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    color: #1db954;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-button {
-    padding: 10px 20px;
-    background-color: blue;
-    color: white;
+header p {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+}
+
+header .btn {
+    background-color: #0026ff;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1em;
     cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 25px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
-    background-color: darkblue;
+header .btn:hover {
+    background-color: #ff4d00;
+    transform: scale(1.05);
+}
+
+.intro {
+    position: relative;
+}
+
+.intro h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.intro p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.features-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 1em 0;
+    font-size: 1.1em;
+}
+
+.features-list li {
+    margin: 0.5em 0;
+}
+
+.features-list i {
+    color:     #1db954; /* Icon color */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.intro-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+.features {
+    background: black;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 2em 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #1db954;
+}
+
+.feature-item {
+    margin: 1em 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #1db954;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.testimonials {
+    background: black;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 2em 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #1db954;
+}
+
+.testimonial-item {
+    margin: 1em 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid #1db954;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: scale(1.02);
+}
+
+.testimonial-item cite {
+    display: block;
+    margin-top: 0.5em;
+    font-style: italic;
+    color: #ccc;
+}
+
+.call-to-action {
+    background: linear-gradient(135deg, #1db954, #1ed760);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 2em 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.call-to-action h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.call-to-action p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
 }
 
 footer {
-    margin-top: 20px;
-    color: gray;
+    margin-top: 3em;
+    font-size: 1.1em;
+    color: rgb(159, 159, 159);
 }
 
+footer p {
+    margin: 0;
+
+}
+
+#footbtn {
+    background-color: #ff4d00;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#footbtn:hover {
+    background-color: #0026ff;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
